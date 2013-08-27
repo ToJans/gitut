@@ -72,14 +72,13 @@ defmodule Git do
 	end
 
 	defp git_cmd(cmd) do
-		if ("-v" in System.argv) do
-			IO.puts "> git #{cmd}"
-		end
-		result = "git #{cmd} 2>&1" |> System.cmd
-		if ("-v" in System.argv) do
-			IO.puts result
-		end
-		result
+		puts_if_verbose("> git #{cmd}")
+		puts_if_verbose("git #{cmd} 2>&1" |> System.cmd)
+	end
+
+	defp puts_if_verbose(what) do
+		if ("-v" in System.argv), do: IO.puts(what)
+		what
 	end
 
 	defp commit_line_to_commit_tuple(line) do
