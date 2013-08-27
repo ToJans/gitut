@@ -1,6 +1,6 @@
 # Gitut
 
-This tool allows you to use any git repository as a tutorial, given it has proper commit messages. 
+This tool allows you to turn *any* git repository as a tutorial, given it has proper commit messages. 
 
 This is currently still a WIP, but I think it works rather well.
 
