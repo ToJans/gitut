@@ -123,14 +123,16 @@ defmodule Gitut do
 	end
 
 	@doc """
-	Shows the code you are supposed to have	when you have completed the current step.
+	Fires up a browser on github, where you can comment on this particular step.
+
+	This functionality allows you to engage in a discussion with the intial committer or others.
 
 	# Example
 
-	     gitut hint
+	     gitut comment
 
 	"""
-	def hint do
+	def comment do
 		complete_monad(next_commit,System.cmd("start #{Git.url}/commit/#{next_commit}"))
 	end
 
