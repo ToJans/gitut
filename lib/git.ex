@@ -57,7 +57,12 @@ defmodule Git do
 			|> Regex.captures(firstline)
 			|> List.flatten
 			|> Keyword.get(:url) 
+			|> xlat_non_http
 		result <> append
+	end
+
+	defp xlat_non_http(url) do
+		String.replace(url,"git@github.com:","https://github.com/")
 	end
 
 	@doc """
