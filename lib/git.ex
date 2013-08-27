@@ -7,7 +7,7 @@ defmodule Git do
 	Get a chronological list of {"commit id","commit titles"}
 	"""
 	def commits() do
-		git_lines("log --oneline")
+		git_lines("log origin/HEAD --oneline")
 			|> Enum.map(&commit_line_to_commit_tuple/1)
 			|> Enum.filter( { nil, nil} != &1 )
 			|> Enum.reverse
@@ -37,7 +37,6 @@ defmodule Git do
 	If a repository exists in this folder, it is overwritten.
 	"""
 	def clone(url) do
-		File.rm_rf(".git")
 		git_lines("clone #{url} --no-checkout .")
 	end
 
@@ -49,13 +48,38 @@ defmodule Git do
 		git_cmd("log #{commit_id} -1 --pretty=format:%B")
 	end
 
+	@doc """
+	Gets the github url of the project
+	"""
+	def url(append//"") do
+		firstline = git_lines("remote -v") |> hd
+		result = %r/^\w+\s+(?<url>[^\s]+)\.git.*$/g
+			|> Regex.captures(firstline)
+			|> List.flatten
+			|> Keyword.get(:url) 
+		result <> append
+	end
+
+	@doc """
+	Get the diff between the current version and a commit_id
+	"""
+	def diff(commit_id//"HEAD") do
+		git_cmd("diff #{commit_id}")
+	end
+
 	defp git_lines(cmd) do
 		git_cmd(cmd) |> String.split(%r/[\r?\n]+/)
 	end
 
 	defp git_cmd(cmd) do
-		cmd = "git #{cmd} 2>&1" |> String.to_char_list!
-		:os.cmd(cmd) |> String.from_char_list!
+		if ("-v" in System.argv) do
+			IO.puts "> git #{cmd}"
+		end
+		result = "git #{cmd} 2>&1" |> System.cmd
+		if ("-v" in System.argv) do
+			IO.puts result
+		end
+		result
 	end
 
 	defp commit_line_to_commit_tuple(line) do

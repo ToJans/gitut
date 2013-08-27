@@ -1,0 +1,1 @@
+@elixir -pa "%~dp0..\ebin" "%~dp0..\cli.exs" %*
