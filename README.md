@@ -1,4 +1,3 @@
-gitut
-=====
+# Gitut
 
-A tool to use a git repository as a tutorial
+** TODO: Add description **
