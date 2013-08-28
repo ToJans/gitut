@@ -140,7 +140,7 @@ defmodule Gitut do
 	Shows a list of commands or the help for a command.
 	"""
 	def help() do
-		System.argv |> Enum.at(1) |> help_cmd
+		get_argv(1) |> help_cmd
 	end
 
 	defp help_cmd(nil) do
@@ -152,8 +152,11 @@ defmodule Gitut do
 
 		IO.puts """
 
+		You can also add a verbose flag `-v` to any command to enable git interaction output. 
+
 		Type `gitut [command]` (`command` without the brackets) to run a commmand.
 		For example, type `gitut help start` for more info about `start`.
+
 		"""
 	end
 

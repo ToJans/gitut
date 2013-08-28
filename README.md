@@ -23,7 +23,7 @@ And make sure the `bin\gitut.bat` is available in your path.
 Go to a folder where you want to test it; here is an example:
 
 ```
-C:\blah\AggregateSource>gitut
+C:\dev\elixir\gitut>gitut
 Unknown command: "
 
 
@@ -37,9 +37,10 @@ help    Shows a list of commands or the help for a command.
 start   Start a new gitut from a github `username/project`.
 todo    Find out what you have to do next to complete this step.
 
+You can also add a verbose flag `-v` to any command to enable git interaction output.
+
 Type `gitut [command]` (`command` without the brackets) to run a commmand.
 For example, type `gitut help start` for more info about `start`.
-
 
 C:\blah>gitut help start
 Help for: start
