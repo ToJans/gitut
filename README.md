@@ -23,22 +23,23 @@ And make sure the `bin\gitut.bat` is available in your path.
 Go to a folder where you want to test it; here is an example:
 
 ```
-C:\blah>gitut
+C:\blah\AggregateSource>gitut
 Unknown command: "
 
 
 These are the available commands for gitut.
 
 
+comment Fires up a browser on github, where you can comment on this particular step.
 diff    Shows the difference between your code, and the example reference code
 done    Checks out the code for the current step and tells you what to do for the next step.
 help    Shows a list of commands or the help for a command.
-hint    Shows the code you are supposed to have when you have completed the current step.
 start   Start a new gitut from a github `username/project`.
 todo    Find out what you have to do next to complete this step.
 
 Type `gitut [command]` (`command` without the brackets) to run a commmand.
 For example, type `gitut help start` for more info about `start`.
+
 
 C:\blah>gitut help start
 Help for: start
@@ -80,7 +81,7 @@ index a8d97ee..d020c38 100644
 -This repository is used as a test-fixture for the [gitut](http://github.com/ToJans/gitut) project.
 +This repository is used as a test-fixture for the gitut project
 
-C:\blah\testfixture-repo>gitut hint
+C:\blah\testfixture-repo>gitut comment
 C:\blah\testfixture-repo>echo this opened up a browser with the github commit
 this opened up a browser with the github commit
 
