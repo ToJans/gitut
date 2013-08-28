@@ -23,7 +23,7 @@ And make sure the `bin\gitut.bat` is available in your path.
 Go to a folder where you want to test it; here is an example:
 
 ```
-C:\dev\elixir\gitut>gitut
+C:\blah>gitut
 Unknown command: "
 
 
